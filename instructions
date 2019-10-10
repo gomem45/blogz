@@ -2,3 +2,7 @@
 1. Create virtual environment for the Blog
 2. Activate the virtual environment console 
 3. Install the Flask microframework into project
+
+1. Install flask-sqlalchemy to access databases
+2. Install mymysql to connect to mysql database 
+3. Create SQL fields by importing class and var 

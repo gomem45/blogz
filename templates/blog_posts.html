@@ -1,33 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-   <h1>Add New Posts</h1>
-   <form method="post">
-      <label>
-         Titlee:
-         <input type="text" name="title" />
-      </label>
-      <br />
-      <br />
-      <label>
-         Body:
-        <textarea name="body" cols="30", rows="10"></textarea>
-      </label>
-      <br />
-      <br />
-      <input type="submit" value="Add Post" />
-   </form>
 
-   <hr>
+{% if posts | length == 0 %}
+<p>There are no Blog posts at the moment</p>
+{% else %}
 
-   {% if fields | length == 0 %}
-      <p>There are no blog posts at the moment</p>
-   {% else %}
-      <ul>
-         {% for field in fields %}
-            <li>{{ field }}</li>
-         {% endfor %}
-      </ul>
-   {% endif %}
+    <div>
+        {% for post in posts %}
+            <h1>
+                <a href="./single_post?post_id={{ post.id }}">
+                    {{ post.title }}
+                </a>
+            </h1>
+            <p>{{ post.body }}</p>
+            <hr>
+        {% endfor %}
+    </div>
+
+{% endif %}
 
 {% endblock %}
