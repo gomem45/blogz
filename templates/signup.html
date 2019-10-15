@@ -1,0 +1,36 @@
+
+{% extends 'base.html '%}
+
+{% block content %}
+   <style>
+    .error {color: red;}
+    </style>
+
+   <div class="container">
+      <div class="form-wrapper">
+         <h1> Register an Account </h1>
+
+         {% with messages = get_flashed_messages() %}
+            {% if messages %}
+               <span class="error">{{ messages[0] }} </span>
+            {% endif %}
+         {% endwith %}
+         
+
+         <form action="/signup" method="POST">
+            
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username" value={{ username }} />
+            <br><br>
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password" value={{ password }}  />
+            <br><br>
+            <label for="confirm">Confirm Password</label><br>
+            <input type="password" id="confirm" name="verify" value={{ verify }} />
+            <br><br>
+            <input type="submit" name="submit" value="Sign Up">
+         </form>
+      </div>
+   </div>
+
+{% endblock %}

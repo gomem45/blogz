@@ -1,0 +1,37 @@
+
+{% extends 'base.html '%}
+
+{% block content %}
+   <style>
+    .error {color: red;}
+    </style>
+
+   <div class="container">
+      <div class="form-wrapper">
+         <h1> Login To Create Posts </h1>
+         <p> If you don't have an account, you need to register <a href="/signup"> Sign up </a> here
+         
+         <form action="/login" method="POST">
+
+            {% with messages = get_flashed_messages(category_filter=["user"]) %}
+
+               <label for="username">Username</label>
+               <input type="text" id="username" name="username" value={{ request.form.username }} />
+               <p class="error">{{ messages[0] }}</p>
+            
+            {% endwith %}
+            {% with messages = get_flashed_messages(category_filter=["pwd"]) %}
+
+               <label for="password">Password</label>
+               <input type="password" id="password" name="password" value={{ password }} />
+               <p class="error">{{ messages[0] }}</p>
+
+            {% endwith %}
+
+            <input type="submit" name="submit" value="Login">
+            
+         </form>
+      </div>
+   </div>
+
+{% endblock %}

@@ -1,12 +1,25 @@
 <!doctype html>
 <html>
     <head>
-        <title>{{title}}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Blogz</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     </head>
 <body>
-    <nav >
-        <a href="/">Main Blog Page</a>
-        <a href="/newpost">Add a Blog Entry</a>
+    <nav>
+        <ul id="user-area">
+            <li><a href="/login">Log In</a></li>
+            <li><a href="/logout">Log Out</a></li>
+        </ul>
+    </nav>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog_posts">Main Blog Page</a></li>
+            <li><a href="/newpost">Add a Blog Entry</a>
+        </ul>
     </nav>
     
     {% block content %}

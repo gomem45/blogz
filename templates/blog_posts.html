@@ -2,22 +2,46 @@
 
 {% block content %}
 
-{% if posts | length == 0 %}
-<p>There are no Blog posts at the moment</p>
-{% else %}
-
-    <div>
-        {% for post in posts %}
-            <h1>
-                <a href="./single_post?post_id={{ post.id }}">
-                    {{ post.title }}
+    {% if authors %}
+        {% for writer in user %}
+            <h2> List of Blog Posts </h2>
+            <h3>
+                <a href="/blog_posts?id={{ writer.id }}">
+                {{ writer.title }}
                 </a>
-            </h1>
-            <p>{{ post.body }}</p>
+            </h3>
+            <p>{{ writer.body }}</p>
+            <p>Author: <a href="/blog_posts?user={{ writer.owner_id }}">
+                {{ writer.owner.username }}   
+            </a></p>
             <hr>
         {% endfor %}
-    </div>
 
-{% endif %}
+    {% elif page %}
+        <h2>{{ post[0].title }}</h2>
+        <p>{{ post[0].body }}</p>
+        <p> Written by <a href="/blog_posts?user={{ post[0].owner_id }}">
+            {{ post[0].owner.username }}
+        </a></p>
+
+    {% else %}
+        <h2> Build a Blog </h2>
+        <div>
+            {% for post in posts %}
+                
+                <h3>
+                    <a href="/blog_posts?id={{ post.id }}">
+                        {{ post.title }}
+                    </a>
+                </h3>
+                <p>{{ post.body }}</p>
+                <p> Written by <a href="/blog_posts?user={{ post.owner_id }}">
+                    {{ post.owner.username }}
+                </a></p>
+                <hr>
+            {% endfor %}
+        </div>
+
+    {% endif %}
 
 {% endblock %}
