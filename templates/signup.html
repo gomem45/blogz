@@ -3,7 +3,11 @@
 
 {% block content %}
    <style>
-    .error {color: red;}
+   .error {
+       color: red;
+       text-align: center;
+       font-size: 16px;
+   }
     </style>
 
    <div class="container">
@@ -12,7 +16,7 @@
 
          {% with messages = get_flashed_messages() %}
             {% if messages %}
-               <span class="error">{{ messages[0] }} </span>
+               <p class="error">{{ messages[0] }} </p>
             {% endif %}
          {% endwith %}
          
@@ -20,15 +24,15 @@
          <form action="/signup" method="POST">
             
             <label for="username">Username</label><br>
-            <input type="text" id="username" name="username" value={{ username }} />
+            <input type="text" id="username" name="username"  />
             <br><br>
             <label for="password">Password</label><br>
-            <input type="password" id="password" name="password" value={{ password }}  />
+            <input type="password" id="password" name="password" />
             <br><br>
             <label for="confirm">Confirm Password</label><br>
-            <input type="password" id="confirm" name="verify" value={{ verify }} />
+            <input type="password" id="confirm" name="verify" />
             <br><br>
-            <input type="submit" name="submit" value="Sign Up">
+            <input type="submit" class="button" name="submit" value="Sign up" >
          </form>
       </div>
    </div>
